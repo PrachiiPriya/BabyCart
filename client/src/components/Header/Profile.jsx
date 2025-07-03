@@ -16,10 +16,13 @@ export default function Profile() {
     setAnchorEl(null);
   };
 
-  const logout = () => {
-    setAccount(''); // Use null or an empty string based on your handling
-    handleClose();
-  };
+ const logout = () => {
+  localStorage.removeItem('user');
+  // Clear global context
+  setAccount('');
+  handleClose();
+};
+
 
   return (
     <>
