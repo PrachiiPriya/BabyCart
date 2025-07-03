@@ -3,19 +3,26 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-app.use(cors());
-app.use(express.json());
-
+require('dotenv').config();
 const bodyParser = require('body-parser');
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// app.options('*', cors());
+
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require('dotenv').config();
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
 const db = require('./database/db');
-
 const DBdata = require('./DBdata');
 DBdata();
 
@@ -34,12 +41,11 @@ app.get('/', async (req, res) => {
 
 const BoutiqueRouter = require('./routes/BoutiqueRoutes');
 const signupRouter = require('./routes/loginSignupRoute');
-const cartRoutes = require('./routes/cartRoutes'); // Import cartRoutes
+const cartRoutes = require('./routes/cartRoutes');
 
 app.use('/api/loginSignup', signupRouter);
 app.use('/api/boutiques', BoutiqueRouter);
-app.use('/api/cart', cartRoutes); // Use cartRoutes
-
+app.use('/api/cart', cartRoutes);
 
 const PORT = 8000;
 app.listen(PORT, () => {
