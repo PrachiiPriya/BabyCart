@@ -4,6 +4,44 @@ A full-stack e-commerce web application for baby and kids products, built with R
 
 ---
 
+## Preview
+
+### Home Page
+
+![Home Page](screenshots/home.png)
+
+&nbsp;
+
+### Boutique Collection
+
+![Collection Page](screenshots/collection.png)
+
+&nbsp;
+
+### Filter by Category, Discount, Price & Age
+
+![Filter Page](screenshots/filter.png)
+
+&nbsp;
+
+### Category Filter Applied (Girl Fashion)
+
+![Filter with Category](screenshots/filter-category.png)
+
+&nbsp;
+
+### Shopping Cart with Price Breakdown
+
+![Cart Page](screenshots/cart.png)
+
+&nbsp;
+
+### My Orders — Order History & Payment Status
+
+![Orders Page](screenshots/orders.png)
+
+---
+
 ## Live Demo
 
 > Running locally on `http://localhost:3000` (client) and `http://localhost:8000` (server).
@@ -284,29 +322,7 @@ No real money is charged in test mode.
 
 ---
 
-## Screenshots
-
-### Home Page
-![Home Page](screenshots/home.png)
-
-### Boutique Collection
-![Collection Page](screenshots/collection.png)
-
-### Filter by Category, Discount, Price & Age
-![Filter Page](screenshots/filter.png)
-
-### Category Filter Applied (Girl Fashion)
-![Filter with Category](screenshots/filter-category.png)
-
-### Shopping Cart with Price Breakdown
-![Cart Page](screenshots/cart.png)
-
-### My Orders — Order History & Payment Status
-![Orders Page](screenshots/orders.png)
-
----
-
-## Key Highlights 
+## Key Highlights
 
 - **Full-stack architecture** with clear separation of client and server
 - **Production-grade payment integration** — Razorpay with server-side order creation, cryptographic signature verification (HMAC-SHA256), and webhook handling with raw body parsing
