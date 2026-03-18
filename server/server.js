@@ -15,6 +15,10 @@ app.use(cors({
 
 // app.options('*', cors());
 
+// Razorpay webhook needs raw body – register before any body parser
+const paymentRoutes = require('./routes/paymentRoutes');
+app.post('/api/payment/webhook', bodyParser.raw({ type: 'application/json' }), paymentRoutes.handleWebhook);
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,6 +50,7 @@ const cartRoutes = require('./routes/cartRoutes');
 app.use('/api/loginSignup', signupRouter);
 app.use('/api/boutiques', BoutiqueRouter);
 app.use('/api/cart', cartRoutes);
+app.use('/api/payment', paymentRoutes);
 
 const PORT = 8000;
 app.listen(PORT, () => {

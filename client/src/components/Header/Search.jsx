@@ -4,32 +4,36 @@ import SearchIcon from '@mui/icons-material/Search';
 import { pink } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 
-const SearchContainer = styled(Box)`
-  background-color: #FFFFFF;
-  width: 25%;
-  display: flex;
-  border-radius: 2px;
-  margin-left: 10px;
+const SearchContainer = styled(Box)(({ theme }) => ({
+  backgroundColor: '#fff',
+  display: 'flex',
+  alignItems: 'center',
+  borderRadius: 4,
+  marginLeft: 10,
+  width: '100%',
+  minHeight: 40,
+  maxHeight: 40,
+  '& .MuiInputBase-root': {
+    height: '100%',
+  },
+  [theme.breakpoints.down('md')]: {
+    marginLeft: 0,
+  },
+  [theme.breakpoints.down('600px')]: {
+    minHeight: 36,
+    maxHeight: 36,
+  },
+}));
 
-  @media (max-width: 960px) {
-    width: 40%;
-  }
-
-  @media (max-width: 600px) {
-    width: 60%;
-    margin-left: 0;
-  }
-`;
-
-const InputSearchBase = styled(InputBase)`
-  width: 100%;
-  padding-right: 20px;
-  font-size: unset;
-
-  @media (max-width: 600px) {
-    font-size: 14px;
-  }
-`;
+const InputSearchBase = styled(InputBase)(({ theme }) => ({
+  width: '100%',
+  paddingRight: 12,
+  paddingLeft: 12,
+  fontSize: '0.875rem',
+  [theme.breakpoints.down('600px')]: {
+    fontSize: 14,
+  },
+}));
 
 const SearchIconWrapper = styled(SearchIcon)`
   color: ${pink[500]};

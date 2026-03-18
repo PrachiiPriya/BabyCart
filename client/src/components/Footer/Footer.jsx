@@ -1,32 +1,76 @@
-import React from 'react'
-import { styled, Box} from '@mui/system'
+import React from 'react';
+import { styled, Box } from '@mui/system';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const StyledBox=styled(Box)`
-background-color:#d9f3f4;
-padding: 20px;
-`;
+const StyledBox = styled(Box)(({ theme }) => ({
+  backgroundColor: '#d9f3f4',
+  padding: '40px 24px 32px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '32px 16px 24px',
+  },
+}));
 
-const ContentBox=styled(Box)`
-display: flex;
-flex-direction: row;
-justify-content: space-around;
- align-items: flex-start;
-  align-items: center;
-  margin: 10px;
-`;
+const Inner = styled(Box)(({ theme }) => ({
+  maxWidth: 1200,
+  margin: '0 auto',
+}));
 
-const CollectionBox=styled(Box)`
-display:flex;
-flex-direction:column;
+const Title = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: 32,
+  fontWeight: 600,
+  fontSize: '1.5rem',
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 24,
+    fontSize: '1.25rem',
+  },
+}));
 
-`;
-const ItemBox=styled(Box)`
-display:flex;
-flex-direction:column;
-margin-top: -100px;
-`;
+const ContentBox = styled(Box)(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: 48,
+  alignItems: 'start',
+  justifyContent: 'center',
+  [theme.breakpoints.down('md')]: {
+    gridTemplateColumns: '1fr',
+    gap: 32,
+    textAlign: 'center',
+  },
+  [theme.breakpoints.down('sm')]: {
+    gap: 28,
+  },
+}));
+
+const Column = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  [theme.breakpoints.down('md')]: {
+    alignItems: 'center',
+  },
+}));
+
+const ColumnTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 600,
+  fontSize: '0.875rem',
+  marginBottom: 12,
+  textTransform: 'uppercase',
+  letterSpacing: '0.02em',
+  color: '#333',
+}));
+
+const StyledLink = styled(Link)(({ theme }) => ({
+  color: '#1976d2',
+  textDecoration: 'none',
+  fontSize: '0.875rem',
+  marginBottom: 8,
+  lineHeight: 1.5,
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}));
 
 const collections = [
   'Its Raining Its Pouring',
@@ -49,25 +93,27 @@ const Items =[
 export default function Footer() {
   return (
     <StyledBox>
-        <Typography variant="h4" style={{ textAlign: 'center' }}>big store for little ones</Typography>
+      <Inner>
+        <Title component="h2">big store for little ones</Title>
         <ContentBox>
-          <CollectionBox>
-            <Typography variant="h6">SEE OUR COLLECTIONS:</Typography>
+          <Column>
+            <ColumnTitle component="h3">See our collections</ColumnTitle>
             {collections.map((collection) => (
-              <Link to={`/boutiques/${collection}`} key={collection}>
+              <StyledLink to={`/boutiques/${collection}`} key={collection}>
                 {collection}
-              </Link>
+              </StyledLink>
             ))}
-          </CollectionBox>
-          <ItemBox>
-            <Typography variant="h6">SEE ALL CLOTHING ITEMS :</Typography>
+          </Column>
+          <Column>
+            <ColumnTitle component="h3">See all clothing items</ColumnTitle>
             {Items.map((item) => (
-              <Link to={`/search/${item}`} key={item}>
+              <StyledLink to={`/search/${item}`} key={item}>
                 {item}
-              </Link>
+              </StyledLink>
             ))}
-          </ItemBox>
+          </Column>
         </ContentBox>
-      </StyledBox>
-  )
+      </Inner>
+    </StyledBox>
+  );
 }

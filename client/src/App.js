@@ -9,12 +9,14 @@ import DataProvider from './context/DataProvider';
 import SearchAns from './SearchAns';
 import ProductPage from './components/Header/filter/ProductPage';
 import Cart from './components/cart/Cart';
+import Orders from './components/orders/Orders';
 
 function App() {
   return (
     <DataProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="/orders" element={<><Header /><Box style={{ marginTop: 70 }}><Orders /></Box></>} />
             <Route path="/" element={
               <>
                 <Header />
@@ -27,7 +29,7 @@ function App() {
             <Route path="/boutiques/:collection" element={<Collection />} />  
             <Route path="/search/:query" element={<SearchAns />} />
             <Route path="/filter" element={<FilterProd />} />
-            <Route path="/cart" element={<Cart/>}/>
+            <Route path="/cart" element={<Cart />} />
             {/* <Route path="/products" element={<ProductPage />} /> */}
           </Routes>
         </BrowserRouter>

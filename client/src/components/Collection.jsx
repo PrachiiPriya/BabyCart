@@ -139,6 +139,7 @@ function Collection() {
           </ProductCard>
         ))}
       </ProductContainer>
+      <ToastContainer />
     </Container>
   );
 }
